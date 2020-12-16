@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Dec 15 15:49:32 2020
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Revision Name : MDE
+Top-level Entity Name : MDE
+Family : Cyclone IV E
+Total logic elements : 247
+    Total combinational functions : 227
+    Dedicated logic registers : 146
+Total registers : 146
+Total pins : 17
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

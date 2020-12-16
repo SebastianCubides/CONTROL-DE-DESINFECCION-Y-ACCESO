@@ -1,0 +1,25 @@
+module DIVFREQ(clk,clk1h);
+
+input clk;
+output reg clk1h;
+
+reg [27:0] count;
+
+always @(posedge clk)begin 
+	
+	if(count<50_000_000)begin
+		
+		count = count + 1; 	
+		
+		end
+	
+	else begin
+	
+		clk1h = !clk1h;
+		count = 0;
+		
+		end
+	
+end 
+
+endmodule 

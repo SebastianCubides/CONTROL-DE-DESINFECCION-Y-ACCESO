@@ -1,0 +1,578 @@
+Analysis & Synthesis report for MDE
+Tue Dec 15 15:49:32 2020
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |MDE|status
+  9. State Machine - |MDE|buzzer:bzz|state
+ 10. State Machine - |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX|State
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Inverted Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Parameter Settings for User Entity Instance: Top-level Entity: |MDE
+ 17. Parameter Settings for User Entity Instance: UART:uartSC|UART_rs232_rx:I_RS232RX
+ 18. Parameter Settings for User Entity Instance: UART:uartSC|UART_rs232_tx:I_RS232TX
+ 19. Parameter Settings for User Entity Instance: buzzer:bzz
+ 20. Port Connectivity Checks: "UART:uartSC|UART_BaudRate_generator:I_BAUDGEN"
+ 21. Port Connectivity Checks: "UART:uartSC|UART_rs232_tx:I_RS232TX"
+ 22. Port Connectivity Checks: "UART:uartSC|UART_rs232_rx:I_RS232RX"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+ 26. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++------------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Dec 15 15:49:32 2020       ;
+; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Revision Name                      ; MDE                                         ;
+; Top-level Entity Name              ; MDE                                         ;
+; Family                             ; Cyclone IV E                                ;
+; Total logic elements               ; 247                                         ;
+;     Total combinational functions  ; 227                                         ;
+;     Dedicated logic registers      ; 146                                         ;
+; Total registers                    ; 146                                         ;
+; Total pins                         ; 17                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
++------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE6E22C8        ;                    ;
+; Top-level entity name                                            ; MDE                ; MDE                ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 2           ;
+; Maximum allowed            ; 2           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                            ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                                                                              ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; DISPENSADOR.v                    ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DISPENSADOR.v             ;         ;
+; DIVFREQ.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DIVFREQ.v                 ;         ;
+; MaquinaDeEstados.v               ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v        ;         ;
+; TOP.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/TOP.v                     ;         ;
+; UART_baudrate_generator.v        ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_baudrate_generator.v ;         ;
+; UART_rx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_rx.v                 ;         ;
+; UART_tx.v                        ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_tx.v                 ;         ;
+; buzzer.v                         ; yes             ; User Verilog HDL File  ; C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v                  ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 247       ;
+;                                             ;           ;
+; Total combinational functions               ; 227       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 87        ;
+;     -- 3 input functions                    ; 35        ;
+;     -- <=2 input functions                  ; 105       ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 145       ;
+;     -- arithmetic mode                      ; 82        ;
+;                                             ;           ;
+; Total registers                             ; 146       ;
+;     -- Dedicated logic registers            ; 146       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 17        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 112       ;
+; Total fan-out                               ; 1133      ;
+; Average fan-out                             ; 2.78      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+-------------------------+--------------+
+; Compilation Hierarchy Node                ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name             ; Library Name ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+-------------------------+--------------+
+; |MDE                                      ; 227 (19)            ; 146 (7)                   ; 0           ; 0            ; 0       ; 0         ; 17   ; 0            ; |MDE                                               ; MDE                     ; work         ;
+;    |DISPENSADOR:dsp|                      ; 39 (2)              ; 31 (2)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|DISPENSADOR:dsp                               ; DISPENSADOR             ; work         ;
+;       |DIVFREQ:div|                       ; 37 (37)             ; 29 (29)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|DISPENSADOR:dsp|DIVFREQ:div                   ; DIVFREQ                 ; work         ;
+;    |UART:uartSC|                          ; 70 (0)              ; 60 (0)                    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|UART:uartSC                                   ; UART                    ; work         ;
+;       |UART_BaudRate_generator:I_BAUDGEN| ; 21 (21)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|UART:uartSC|UART_BaudRate_generator:I_BAUDGEN ; UART_BaudRate_generator ; work         ;
+;       |UART_rs232_rx:I_RS232RX|           ; 23 (23)             ; 28 (28)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX           ; UART_rs232_rx           ; work         ;
+;       |UART_rs232_tx:I_RS232TX|           ; 26 (26)             ; 16 (16)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|UART:uartSC|UART_rs232_tx:I_RS232TX           ; UART_rs232_tx           ; work         ;
+;    |buzzer:bzz|                           ; 99 (99)             ; 48 (48)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |MDE|buzzer:bzz                                    ; buzzer                  ; work         ;
++-------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+-------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------+
+; State Machine - |MDE|status                                                                      ;
++--------------+------------+--------------+------------+-------------+-------------+--------------+
+; Name         ; status.END ; status.ALARM ; status.GEL ; status.TEMP ; status.DATA ; status.START ;
++--------------+------------+--------------+------------+-------------+-------------+--------------+
+; status.START ; 0          ; 0            ; 0          ; 0           ; 0           ; 0            ;
+; status.DATA  ; 0          ; 0            ; 0          ; 0           ; 1           ; 1            ;
+; status.TEMP  ; 0          ; 0            ; 0          ; 1           ; 0           ; 1            ;
+; status.GEL   ; 0          ; 0            ; 1          ; 0           ; 0           ; 1            ;
+; status.ALARM ; 0          ; 1            ; 0          ; 0           ; 0           ; 1            ;
+; status.END   ; 1          ; 0            ; 0          ; 0           ; 0           ; 1            ;
++--------------+------------+--------------+------------+-------------+-------------+--------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------+
+; State Machine - |MDE|buzzer:bzz|state                                                                     ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; Name      ; state.111 ; state.110 ; state.101 ; state.100 ; state.011 ; state.010 ; state.001 ; state.000 ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+; state.000 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ;
+; state.001 ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 1         ;
+; state.010 ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 1         ;
+; state.011 ; 0         ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 1         ;
+; state.100 ; 0         ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 1         ;
+; state.101 ; 0         ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; state.110 ; 0         ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
+; state.111 ; 1         ; 0         ; 0         ; 0         ; 0         ; 0         ; 0         ; 1         ;
++-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+-----------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX|State ;
++------------+---------------------------------------------------+
+; Name       ; State.READ                                        ;
++------------+---------------------------------------------------+
+; State.IDLE ; 0                                                 ;
+; State.READ ; 1                                                 ;
++------------+---------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++---------------------------------------------------+----------------------------------------+
+; Register name                                     ; Reason for Removal                     ;
++---------------------------------------------------+----------------------------------------+
+; rst                                               ; Stuck at VCC due to stuck port data_in ;
+; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[0..7] ; Stuck at GND due to stuck port data_in ;
+; status.DATA                                       ; Lost fanout                            ;
+; status~8                                          ; Lost fanout                            ;
+; status~9                                          ; Lost fanout                            ;
+; status~10                                         ; Lost fanout                            ;
+; buzzer:bzz|state~10                               ; Lost fanout                            ;
+; buzzer:bzz|state~11                               ; Lost fanout                            ;
+; buzzer:bzz|state~12                               ; Lost fanout                            ;
+; UART:uartSC|UART_rs232_rx:I_RS232RX|State~5       ; Lost fanout                            ;
+; Total Number of Removed Registers = 17            ;                                        ;
++---------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                  ;
++------------------------------------------------+---------------------------+-------------------------------------------------+
+; Register name                                  ; Reason for Removal        ; Registers Removed due to This Register          ;
++------------------------------------------------+---------------------------+-------------------------------------------------+
+; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[7] ; Stuck at GND              ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[6], ;
+;                                                ; due to stuck port data_in ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[5], ;
+;                                                ;                           ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[4], ;
+;                                                ;                           ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[3], ;
+;                                                ;                           ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[2], ;
+;                                                ;                           ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[1], ;
+;                                                ;                           ; UART:uartSC|UART_rs232_tx:I_RS232TX|in_data[0]  ;
++------------------------------------------------+---------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 146   ;
+; Number of registers using Synchronous Clear  ; 41    ;
+; Number of registers using Synchronous Load   ; 16    ;
+; Number of registers using Asynchronous Clear ; 20    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 70    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------+
+; Inverted Register Statistics                                           ;
++--------------------------------------------------------------+---------+
+; Inverted Register                                            ; Fan out ;
++--------------------------------------------------------------+---------+
+; UART:uartSC|UART_BaudRate_generator:I_BAUDGEN|baudRateReg[0] ; 2       ;
+; UART:uartSC|UART_rs232_tx:I_RS232TX|start_bit                ; 4       ;
+; UART:uartSC|UART_rs232_rx:I_RS232RX|start_bit                ; 4       ;
+; Total number of inverted registers = 3                       ;         ;
++--------------------------------------------------------------+---------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |MDE|UART:uartSC|UART_rs232_tx:I_RS232TX|Bit[1]     ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX|Bit[3]     ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |MDE|UART:uartSC|UART_rs232_tx:I_RS232TX|counter[1] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX|counter[2] ;
+; 16:1               ; 13 bits   ; 130 LEs       ; 13 LEs               ; 117 LEs                ; Yes        ; |MDE|buzzer:bzz|clk_div2[12]                        ;
+; 10:1               ; 3 bits    ; 18 LEs        ; 15 LEs               ; 3 LEs                  ; No         ; |MDE|Selector5                                      ;
+; 11:1               ; 2 bits    ; 14 LEs        ; 8 LEs                ; 6 LEs                  ; No         ; |MDE|Selector4                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |MDE ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; START          ; 0     ; Signed Integer                             ;
+; DATA           ; 1     ; Signed Integer                             ;
+; TEMP           ; 2     ; Signed Integer                             ;
+; GEL            ; 3     ; Signed Integer                             ;
+; ALARM          ; 4     ; Signed Integer                             ;
+; END            ; 5     ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: UART:uartSC|UART_rs232_rx:I_RS232RX ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; IDLE           ; 0     ; Unsigned Binary                                         ;
+; READ           ; 1     ; Unsigned Binary                                         ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: UART:uartSC|UART_rs232_tx:I_RS232TX ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; IDLE           ; 0     ; Unsigned Binary                                         ;
+; WRITE          ; 1     ; Unsigned Binary                                         ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------+
+; Parameter Settings for User Entity Instance: buzzer:bzz ;
++----------------+-------+--------------------------------+
+; Parameter Name ; Value ; Type                           ;
++----------------+-------+--------------------------------+
+; duo            ; 3822  ; Signed Integer                 ;
+; lai            ; 3405  ; Signed Integer                 ;
+; mi             ; 3034  ; Signed Integer                 ;
+; fa             ; 2865  ; Signed Integer                 ;
+; suo            ; 2551  ; Signed Integer                 ;
+; la             ; 2273  ; Signed Integer                 ;
+; xi             ; 2024  ; Signed Integer                 ;
+; duo1           ; 1911  ; Signed Integer                 ;
++----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:uartSC|UART_BaudRate_generator:I_BAUDGEN" ;
++-----------------+-------+----------+--------------------------------------+
+; Port            ; Type  ; Severity ; Details                              ;
++-----------------+-------+----------+--------------------------------------+
+; BaudRate[15..9] ; Input ; Info     ; Stuck at GND                         ;
+; BaudRate[5..3]  ; Input ; Info     ; Stuck at GND                         ;
+; BaudRate[8]     ; Input ; Info     ; Stuck at VCC                         ;
+; BaudRate[7]     ; Input ; Info     ; Stuck at GND                         ;
+; BaudRate[6]     ; Input ; Info     ; Stuck at VCC                         ;
+; BaudRate[2]     ; Input ; Info     ; Stuck at VCC                         ;
+; BaudRate[1]     ; Input ; Info     ; Stuck at GND                         ;
+; BaudRate[0]     ; Input ; Info     ; Stuck at VCC                         ;
++-----------------+-------+----------+--------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:uartSC|UART_rs232_tx:I_RS232TX"                                                  ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; TxEn   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; TxDone ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UART:uartSC|UART_rs232_rx:I_RS232RX"                                                  ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; RxEn   ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; RxDone ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 17                          ;
+; cycloneiii_ff         ; 146                         ;
+;     CLR               ; 4                           ;
+;     CLR SLD           ; 16                          ;
+;     ENA               ; 57                          ;
+;     ENA SCLR          ; 13                          ;
+;     SCLR              ; 28                          ;
+;     plain             ; 28                          ;
+; cycloneiii_lcell_comb ; 227                         ;
+;     arith             ; 82                          ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 80                          ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 145                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 34                          ;
+;         4 data inputs ; 87                          ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.16                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:03     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Tue Dec 15 15:48:44 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MDE -c MDE
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file dispensador.v
+    Info (12023): Found entity 1: DISPENSADOR File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DISPENSADOR.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file divfreq.v
+    Info (12023): Found entity 1: DIVFREQ File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DIVFREQ.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file maquinadeestados.v
+    Info (12023): Found entity 1: MDE File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file top.v
+    Info (12023): Found entity 1: UART File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/TOP.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_baudrate_generator.v
+    Info (12023): Found entity 1: UART_BaudRate_generator File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_baudrate_generator.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file uart_rx.v
+    Info (12023): Found entity 1: UART_rs232_rx File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_rx.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file uart_tx.v
+    Info (12023): Found entity 1: UART_rs232_tx File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_tx.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file buzzer.v
+    Info (12023): Found entity 1: buzzer File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at DISPENSADOR.v(11): created implicit net for "clk_2" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DISPENSADOR.v Line: 11
+Info (12127): Elaborating entity "MDE" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at MaquinaDeEstados.v(17): object "D" assigned a value but never read File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 17
+Warning (10036): Verilog HDL or VHDL warning at MaquinaDeEstados.v(18): object "T" assigned a value but never read File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 18
+Warning (10036): Verilog HDL or VHDL warning at MaquinaDeEstados.v(21): object "LCD" assigned a value but never read File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 21
+Warning (10036): Verilog HDL or VHDL warning at MaquinaDeEstados.v(22): object "E" assigned a value but never read File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 22
+Warning (10230): Verilog HDL assignment warning at MaquinaDeEstados.v(95): truncated value with size 32 to match size of target (1) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 95
+Warning (10230): Verilog HDL assignment warning at MaquinaDeEstados.v(124): truncated value with size 32 to match size of target (1) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 124
+Info (12128): Elaborating entity "UART" for hierarchy "UART:uartSC" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 30
+Info (12128): Elaborating entity "UART_rs232_rx" for hierarchy "UART:uartSC|UART_rs232_rx:I_RS232RX" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/TOP.v Line: 33
+Warning (10230): Verilog HDL assignment warning at UART_rx.v(83): truncated value with size 32 to match size of target (4) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_rx.v Line: 83
+Warning (10230): Verilog HDL assignment warning at UART_rx.v(92): truncated value with size 32 to match size of target (5) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_rx.v Line: 92
+Info (12128): Elaborating entity "UART_rs232_tx" for hierarchy "UART:uartSC|UART_rs232_tx:I_RS232TX" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/TOP.v Line: 44
+Warning (10230): Verilog HDL assignment warning at UART_tx.v(92): truncated value with size 32 to match size of target (4) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_tx.v Line: 92
+Warning (10230): Verilog HDL assignment warning at UART_tx.v(110): truncated value with size 32 to match size of target (5) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/UART_tx.v Line: 110
+Info (12128): Elaborating entity "UART_BaudRate_generator" for hierarchy "UART:uartSC|UART_BaudRate_generator:I_BAUDGEN" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/TOP.v Line: 51
+Info (12128): Elaborating entity "DISPENSADOR" for hierarchy "DISPENSADOR:dsp" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 32
+Info (12128): Elaborating entity "DIVFREQ" for hierarchy "DISPENSADOR:dsp|DIVFREQ:div" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DISPENSADOR.v Line: 11
+Warning (10230): Verilog HDL assignment warning at DIVFREQ.v(12): truncated value with size 32 to match size of target (28) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/DIVFREQ.v Line: 12
+Info (12128): Elaborating entity "buzzer" for hierarchy "buzzer:bzz" File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/MaquinaDeEstados.v Line: 33
+Warning (10230): Verilog HDL assignment warning at buzzer.v(29): truncated value with size 32 to match size of target (4) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 29
+Warning (10230): Verilog HDL assignment warning at buzzer.v(47): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 47
+Warning (10230): Verilog HDL assignment warning at buzzer.v(51): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 51
+Warning (10230): Verilog HDL assignment warning at buzzer.v(58): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 58
+Warning (10230): Verilog HDL assignment warning at buzzer.v(62): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 62
+Warning (10230): Verilog HDL assignment warning at buzzer.v(69): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 69
+Warning (10230): Verilog HDL assignment warning at buzzer.v(73): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 73
+Warning (10230): Verilog HDL assignment warning at buzzer.v(80): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 80
+Warning (10230): Verilog HDL assignment warning at buzzer.v(84): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 84
+Warning (10230): Verilog HDL assignment warning at buzzer.v(91): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 91
+Warning (10230): Verilog HDL assignment warning at buzzer.v(95): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 95
+Warning (10230): Verilog HDL assignment warning at buzzer.v(102): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 102
+Warning (10230): Verilog HDL assignment warning at buzzer.v(106): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 106
+Warning (10230): Verilog HDL assignment warning at buzzer.v(113): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 113
+Warning (10230): Verilog HDL assignment warning at buzzer.v(117): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 117
+Warning (10230): Verilog HDL assignment warning at buzzer.v(124): truncated value with size 32 to match size of target (22) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 124
+Warning (10230): Verilog HDL assignment warning at buzzer.v(128): truncated value with size 32 to match size of target (13) File: C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/buzzer.v Line: 128
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/output_files/MDE.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 266 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 6 input pins
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 249 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 30 warnings
+    Info: Peak virtual memory: 4755 megabytes
+    Info: Processing ended: Tue Dec 15 15:49:32 2020
+    Info: Elapsed time: 00:00:48
+    Info: Total CPU time (on all processors): 00:00:53
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/Usuario/Documents/Cosas de Sebastian/Electrónica Digital I/PROYECTO/CONTROL-DE-DESINFECCION-Y-ACCESO-DIG-1/CODIGOS/MDE/output_files/MDE.map.smsg.
+
+

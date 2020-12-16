@@ -1,0 +1,25 @@
+
+State Machine - |MDE|status
+Name status.END status.ALARM status.GEL status.TEMP status.DATA status.START 
+status.START 0 0 0 0 0 0 
+status.DATA 0 0 0 0 1 1 
+status.TEMP 0 0 0 1 0 1 
+status.GEL 0 0 1 0 0 1 
+status.ALARM 0 1 0 0 0 1 
+status.END 1 0 0 0 0 1 
+
+State Machine - |MDE|buzzer:bzz|state
+Name state.111 state.110 state.101 state.100 state.011 state.010 state.001 state.000 
+state.000 0 0 0 0 0 0 0 0 
+state.001 0 0 0 0 0 0 1 1 
+state.010 0 0 0 0 0 1 0 1 
+state.011 0 0 0 0 1 0 0 1 
+state.100 0 0 0 1 0 0 0 1 
+state.101 0 0 1 0 0 0 0 1 
+state.110 0 1 0 0 0 0 0 1 
+state.111 1 0 0 0 0 0 0 1 
+
+State Machine - |MDE|UART:uartSC|UART_rs232_rx:I_RS232RX|State
+Name State.READ 
+State.IDLE 0 
+State.READ 1 

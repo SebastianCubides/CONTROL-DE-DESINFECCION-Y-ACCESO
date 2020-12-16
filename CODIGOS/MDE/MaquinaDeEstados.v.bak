@@ -1,0 +1,159 @@
+module MaquinaDeEstados (clk, LEDS, Data, Temp, SoutG, bomba, SoutA, Alarma, RX, TX, RxData);
+
+//Entradas
+input [7:0] Data;
+input [7:0] Temp;
+input SoutG;
+input SoutA;
+reg init;
+input clk;
+input wire RX;
+//Salidas
+reg done;
+output wire bomba;
+output reg Alarma;
+output reg [7:0] LEDS;
+output wire TX;
+output [7:0] RxData;
+//Registros
+reg D;
+reg T;
+reg G;
+wire G2;
+reg LCD;
+reg E;
+reg A;
+reg reset;
+reg [2:0]status;
+
+wire [11:0]BC;
+wire z;
+
+//INICIALIZACIÓN
+DISPENSADOR dsp(clk, bomba, SoutG,G,G2);
+UART uartSC(clk,reset,RX,TX,RxData);
+
+//Asignación
+
+
+
+
+
+
+
+//Verificador
+assign z =(E==1)? 1:0;
+
+//ESCRITURA DE DATOS
+always @(posedge clk)begin
+	
+end
+
+//ESCRITURA TEMP
+always @(posedge clk)begin
+	
+end
+
+//DISPENSACIÓN DE GEL
+always @(posedge clk)begin
+	
+end
+
+//ACTIVACIÓN DE ALARMA
+always @(posedge clk)begin
+	
+end
+
+//Definición de los estados como parámetros
+parameter START = 0, DATA = 1, TEMP = 2, GEL = 3, ALARM = 4, END = 5;	
+
+//M.D.E.
+always @(posedge clk)begin
+
+	case(status)
+		START: begin
+			D = 0;
+			T = 0;
+			G = 0;
+			A = 0;
+			LCD = 1;
+			status = TEMP;
+			if(Data)begin
+				status = DATA;
+				E = 0;
+				reset = 0;
+			end
+			if (SoutA==1)begin
+				status = ALARM;
+			end
+		end
+		DATA: begin
+			D = 1;
+			T = 0;
+			G = 0;
+			A = 0;
+			E = 0;
+			reset = 0;
+			status = TEMP;
+			if (SoutA==1)begin
+				status = ALARM;
+			end
+		end
+		TEMP: begin
+			D = 0;
+			T = 1;
+			G = 0;
+			A = 0;
+			reset = 0;
+			E = 0;
+			if(RxData==2)begin
+				status = GEL;
+			end
+			if(RxData==1)begin
+				status = ALARM;
+			end
+			if (SoutA==1)begin
+				status = ALARM;
+			end
+		end
+		GEL: begin
+			D = 0;
+			T = 0;
+			G = 1;
+			A = 0;
+			E = 0;
+			LCD = 4;
+			reset = 0;
+			if(G2==1)begin
+				status = END;
+			end
+			if (SoutA==1)begin
+				status = ALARM;
+			end
+		end
+		ALARM: begin
+			D = 0;
+			T = 0;
+			G = 0;
+			A = 1;
+			E = 0;
+			if (reset==1)begin
+				status = START;
+			end
+		end
+		END: begin
+			D = 0;
+			T = 0;
+			G = 0;
+			A = 0;
+			E = 1;
+			LCD = 5;
+			reset = 0;
+			if (SoutA==1)begin
+				status = START;
+			end
+		end
+		default status = START;
+	endcase
+end
+endmodule
